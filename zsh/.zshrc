@@ -128,6 +128,9 @@ autoload -Uz compinit && compinit -i
 # tmux
 export EDITOR=vim
 
+# tgenv
+# -----
+export PATH=$HOME/.tgenv/bin:$PATH
 
 # zplug
 # -----

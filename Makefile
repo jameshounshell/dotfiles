@@ -27,7 +27,7 @@ list:
 # ========
 # dotfiles
 # ========
-all_dirs = nvim tmux zsh
+all_dirs = misc nvim tmux zsh
 stow:
 	stow $(all_dirs)
 
