@@ -95,12 +95,16 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
+alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias zshconfig="nvim ~/.zshrc; source ~/.zshrc"
 alias nvimconfig="nvim ~/.config/nvim/init.vim"
 alias hdate="date '+%F_%T'"
-alias cdg='cd $(git rev-parse --show-toplevel)'
+alias gcd='cd $(git rev-parse --show-toplevel)'
+alias gtags="git for-each-ref --sort=creatordate --format '%(refname) %(creatordate)' refs/tags"
 alias notes="nvim ~/notes.md"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias tf=terraform
+alias tg=terragrunt
+alias dc=docker-compose
 
 # [[ -s "/Users/jameshounshell/.gvm/scripts/gvm" ]] && source "/Users/jameshounshell/.gvm/scripts/gvm"
 bindkey -v
@@ -112,7 +116,7 @@ bindkey '^R' history-incremental-search-backward
 # autocomplete
 source <(kubectl completion zsh)
 # source <(kubeadm completion zsh)
-source <(glooctl completion zsh) 
+# source <(glooctl completion zsh) 
 
 #rust
 export PATH=$PATH:$HOME/.cargo/bin
@@ -131,6 +135,18 @@ export EDITOR=vim
 # tgenv
 # -----
 export PATH=$HOME/.tgenv/bin:$PATH
+
+# repay
+# -----
+export TF_VAR_homedir=$HOME
+
+
+# kube
+# -----
+node_last_octets () {
+  kubectl --skip-headers get no | cut -f 5 -d- | sort -n
+}
+
 
 # zplug
 # -----
