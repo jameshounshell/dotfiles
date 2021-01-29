@@ -105,6 +105,7 @@ alias notes="nvim ~/notes.md"
 alias tf=terraform
 alias tg=terragrunt
 alias dc=docker-compose
+alias rm_terraform='find . -type d -name ".terraform" | xargs -p -I % sh -c "rm -rf %"'
 
 # [[ -s "/Users/jameshounshell/.gvm/scripts/gvm" ]] && source "/Users/jameshounshell/.gvm/scripts/gvm"
 bindkey -v
@@ -124,29 +125,12 @@ export PATH=$PATH:$HOME/.cargo/bin
 # python binaries
 export PATH=$PATH:$HOME/Library/Python/3.8/bin/
 
-# repay
-source ~/scripts/repay.sh
-
-autoload -Uz compinit && compinit -i
-
 # tmux
 export EDITOR=vim
 
 # tgenv
 # -----
 export PATH=$HOME/.tgenv/bin:$PATH
-
-# repay
-# -----
-export TF_VAR_homedir=$HOME
-
-
-# kube
-# -----
-node_last_octets () {
-  kubectl --skip-headers get no | cut -f 5 -d- | sort -n
-}
-
 
 # zplug
 # -----
@@ -156,3 +140,13 @@ export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
 zplug "kutsan/zsh-system-clipboard"
 zplug load
+
+# repay
+source ~/scripts/repay.sh
+export TF_VAR_homedir=$HOME
+node_last_octets () {
+  kubectl --skip-headers get no | cut -f 5 -d- | sort -n
+}
+
+
+autoload -Uz compinit && compinit -i
