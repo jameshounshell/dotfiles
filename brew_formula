@@ -11,17 +11,15 @@ freetype
 gdbm
 gettext
 gh
+git
 go
-go-task
 gomplate
 groovy
 helm
 hugo
 icu4c
 jq
-k2tf
 kubernetes-cli
-kubeval
 kustomize
 libevent
 libidn2
@@ -44,6 +42,7 @@ oniguruma
 openjdk
 openssl@1.1
 packer
+pcre2
 pkg-config
 poetry
 pulumi
@@ -55,6 +54,7 @@ reattach-to-user-namespace
 spotifyd
 sqlite
 stow
+tcl-tk
 telnet
 tfenv
 tmux
@@ -62,7 +62,6 @@ tree
 unibilium
 utf8proc
 watch
-waypoint
 wget
 xz
 zplug

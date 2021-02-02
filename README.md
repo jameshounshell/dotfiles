@@ -17,6 +17,9 @@ This repo automates user configuration and software installation
 - second install config/dotfiles
     - `make stow` symlinks all files in this repo to their corresponding location in $HOME
 
+# Caveats
+- Exclude iterm2 folder from stow command
+
 # update package lists
 Before moving to a new machine make sure to update `brew_formula` and `brew_casks`
 - `make brew_update_packages`

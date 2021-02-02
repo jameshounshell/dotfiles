@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/jameshounshell/dotfiles/zsh/.oh-my-zsh"
+export ZSH="$HOME/dotfiles/zsh/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -97,6 +97,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias zshconfig="nvim ~/.zshrc; source ~/.zshrc"
+alias zshrc="nvim ~/.zshrc; source ~/.zshrc"
 alias nvimconfig="nvim ~/.config/nvim/init.vim"
 alias hdate="date '+%F_%T'"
 alias gcd='cd $(git rev-parse --show-toplevel)'
@@ -107,7 +108,7 @@ alias tg=terragrunt
 alias dc=docker-compose
 alias rm_terraform='find . -type d -name ".terraform" | xargs -p -I % sh -c "rm -rf %"'
 
-# [[ -s "/Users/jameshounshell/.gvm/scripts/gvm" ]] && source "/Users/jameshounshell/.gvm/scripts/gvm"
+# [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 bindkey -v
 bindkey -s ';;' '\e'
 bindkey ';;' vi-cmd-mode
@@ -117,7 +118,12 @@ bindkey '^R' history-incremental-search-backward
 # autocomplete
 source <(kubectl completion zsh)
 # source <(kubeadm completion zsh)
-# source <(glooctl completion zsh) 
+# source <(glooctl completion zsh)
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+
+#iterm2 config
+source $HOME/dotfiles/iterm2/iterm2_config.sh
 
 #rust
 export PATH=$PATH:$HOME/.cargo/bin
@@ -138,15 +144,6 @@ export PATH=$HOME/.tgenv/bin:$PATH
 # https://github.com/kutsan/zsh-system-clipboard
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
+autoload -Uz compinit && compinit -i
 zplug "kutsan/zsh-system-clipboard"
 zplug load
-
-# repay
-source ~/scripts/repay.sh
-export TF_VAR_homedir=$HOME
-node_last_octets () {
-  kubectl --skip-headers get no | cut -f 5 -d- | sort -n
-}
-
-
-autoload -Uz compinit && compinit -i

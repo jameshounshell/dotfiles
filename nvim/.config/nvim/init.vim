@@ -9,11 +9,20 @@ set number
 set visualbell
 imap ;; <Esc>     "sequence ;; becomes escape"
 
+" Install vim-plug if not found
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
+
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
+
 call plug#begin('~/.vim/plugged')
-" tabular plugin is used to format tables
-Plug 'godlygeek/tabular'
-" JSON front matter highlight plugin
-Plug 'elzr/vim-json'
+Plug 'godlygeek/tabular'  " tabular plugin is used to format tables
+Plug 'elzr/vim-json'  " JSON front matter highlight plugin
 Plug 'plasticboy/vim-markdown'
 call plug#end()
 
